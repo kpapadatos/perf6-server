@@ -1,0 +1,7 @@
+node_modules
+.vscode
+client
+scripts
+server
+test
+package-lock.json
