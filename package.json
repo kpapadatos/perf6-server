@@ -8,7 +8,9 @@
     "nodemon": "nodemon --signal SIGTERM -w dist --delay 500ms --ext js --exec  \"node -r source-map-support/register dist/main.js\"",
     "test": "mocha -r ts-node/register test/**/*.test.ts",
     "test-w": "mocha --require ts-node/register --watch --watch-files server,test test/**/*.test.ts",
-    "coverage": "nyc --exclude src/tests/** -r lcov -e .ts -x \"*.ts\" npm run test"
+    "coverage": "nyc --exclude src/tests/** -r lcov -e .ts -x \"*.ts\" npm run test",
+    "build": "tsc",
+    "prepublish": "npm run build"
   },
   "author": "Kosmas Papadatos",
   "license": "GPL-2.0-only",
