@@ -2,16 +2,19 @@ import { Router, static as serveStatic } from 'express';
 import { existsSync } from 'fs';
 import { resolve } from 'path';
 
-let indexFilePath = resolve(__dirname, '../dist/client/index.html');
+let dirPrefix = resolve(__dirname, '../dist');
 
-if (!existsSync(indexFilePath)) {
-    indexFilePath = resolve(__dirname, '../client/index.html');
+if (!existsSync(dirPrefix)) {
+    dirPrefix = resolve(__dirname, '..');
 }
+
+const clientDir = resolve(__dirname, `${dirPrefix}/client`);
+const indexFilePath = resolve(clientDir, 'index.html');
 
 export const ClientRouter = Router();
 
 ClientRouter.use(
-    serveStatic('dist/client', { redirect: false }),
+    serveStatic(clientDir, { redirect: false }),
     (req, res) => {
         res.sendFile(indexFilePath);
     }
