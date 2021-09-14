@@ -8,12 +8,12 @@ describe('server', () => {
     const indexFile = readFileSync(resolve(__dirname, '../dist/client/index.html'));
     const faviconFile = readFileSync(resolve(__dirname, '../dist/client/favicon.ico'))
     const app = express();
-    app.use(new Perf6Server().Router);
+    app.use('/perf6', new Perf6Server().Router);
 
     it('should serve default page', done => {
         request(app)
             .get('/perf6/app')
-            .expect('Content-Type', 'text/html; charset=UTF-8')
+            .expect('Content-Type', 'text/html; charset=utf-8')
             .expect(200)
             .expect(indexFile.toString(), done);
     });
@@ -27,7 +27,7 @@ describe('server', () => {
     it('should serve as spa', done => {
         request(app)
             .get('/perf6/app/spa/route')
-            .expect('Content-Type', 'text/html; charset=UTF-8')
+            .expect('Content-Type', 'text/html; charset=utf-8')
             .expect(200)
             .expect(indexFile.toString(), done)
     });
