@@ -2,7 +2,7 @@
   "name": "perf6-server",
   "version": "1.0.3",
   "description": "",
-  "main": "dist/main.js",
+  "main": "dist/server/main.js",
   "scripts": {
     "dev": "ts-node scripts/dev.ts",
     "nodemon": "nodemon --signal SIGTERM -w dist --delay 500ms --ext js --exec  \"node -r source-map-support/register dist/main.js\"",
